@@ -11,6 +11,7 @@
 		});
 		$(window).ready(function() {
 			showTH();
+			$('TABLE TR[rowspan="0"]').attr("rowspan", "1" )
 		});
 		function showTH() {
 			 if($( window ).width() < 767 && !showHeaders) {
@@ -42,10 +43,28 @@
 		TABLE TBODY TR:nth-child(even) TD {
 			background:#9FC5E8;
 		}
-		TABLE TBODY TR TD:nth-child(2) {
-			font-weight:bold;
+		@media (max-width:767px) {
+			TABLE, TABLE * {
+				display:block;
+				width:100%;
+				border:0;
+			}
+			TABLE TH, TABLE THEAD {
+				display:none;
+			}
+			TABLE TR TD SPAN[data-header] {
+				display:inline-block;
+				margin-right:5px;
+				width:15%;
+				color:#808080;
+			}
+			TABLE TR TD {
+				border:1px #000 solid;
+			}
+			TABLE TR {
+				margin-top:5px;
+			}
 		}
-
 	</style>
 </head>
 
@@ -64,7 +83,7 @@
 				</th>
 			</tr>
 		</thead>
-		<tr>
+		<tr rowspan='0'>
 			<td>
 				Jeff
 			</td>
@@ -73,6 +92,28 @@
 			</td>
 			<td>
 				jeff@piggybanktechnology.com
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Ben
+			</td>
+			<td>
+				Bateson
+			</td>
+			<td>
+				ben@piggybanktechnology.com
+			</td>
+		</tr>
+		<tr>
+			<td>
+				James
+			</td>
+			<td>
+				Bateman
+			</td>
+			<td>
+				james.bateman@pyrodesign.ca
 			</td>
 		</tr>
 	</table>
