@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title></title>
+	<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+	<script>
+		var showHeaders = false;
+		$(window).resize(function() {
+			showTH();
+		});
+		$(window).ready(function() {
+			showTH();
+		});
+		function showTH() {
+			 if($( window ).width() < 767 && !showHeaders) {
+				showHeaders = true;
+				$('TABLE TR TH').each(function(index) {
+					$('TABLE TR TD:nth-child(' + (index +1) + ')').prepend('<span data-header="' + $(this).text() + '">' + $(this).text() + '</span>');
+				});
+			 }
+			 if($( window ).width() > 767) {
+				showHeaders = false;
+				$('TABLE TR TD SPAN[data-header]').remove();
+			 }
+		}
+	</script>
+	<style>
+		TABLE {
+			width:70%;
+			margin:0 auto;
+		}
+		TABLE TR TH, TABLE TR TD, TABLE {
+			border:1px #000 solid;
+			border-collapse:collapse;
+		}
+		THEAD TR TH {
+			background:#434343;
+			color:#fff;
+			text-align:center;
+		}
+		TABLE TBODY TR:nth-child(even) TD {
+			background:#9FC5E8;
+		}
+		TABLE TBODY TR TD:nth-child(2) {
+			font-weight:bold;
+		}
+
+	</style>
+</head>
+
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>
+					First
+				</th>
+				<th>
+					Last
+				</th>
+				<th>
+					Email
+				</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>
+				Jeff
+			</td>
+			<td>
+				Manning
+			</td>
+			<td>
+				jeff@piggybanktechnology.com
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
